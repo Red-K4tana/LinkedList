@@ -22,3 +22,20 @@ let node02 = new LinkedListNode({value: 'ewq', key: 231})
 node01.toString()
 node02.toString(nodeStringifier) // подставляю callback, так как node02.val это объект
 
+
+class LinkedList {
+  constructor() {
+    this.head = null
+    this.tail = null
+  }
+
+  prepend(value) {
+    const newNode = LinkedListNode(value, this.head)
+    this.head = newNode
+
+    if (!this.tail) this.tail = newNode
+
+    console.log('prepend ', this)
+    return this
+  }
+}
