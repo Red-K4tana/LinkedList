@@ -62,15 +62,48 @@ class LinkedList {
     this.tail = newNode
     return this
   }
+  delete (value) {
+    // if (!this.head) return null
+
+    let deletedNode = []
+
+    while (this.head && this.head.value === value) {
+      console.log('head ', this.head)
+      deletedNode.push(this.head)
+      this.head = this.head.next
+      console.log('deletedNode ', deletedNode)
+      console.log(this.head)
+    }
+
+    let currentNode = this.head
+
+    if (currentNode !== null) {
+      while (currentNode.next) {
+        if (currentNode.next.value === value) {
+          deletedNode.push(currentNode.next)
+          currentNode.next = currentNode.next.next
+        } else {
+          currentNode = currentNode.next
+        }
+      }
+    }
+
+    if (this.tail && this.tail.value === value) {
+      this.tail = currentNode
+    }
+
+    return deletedNode
+  }
 }
 
 let list = new LinkedList()
 list.prepend('fourth')
-list.prepend('third')
-list.prepend('second')
-list.prepend('first')
-console.log(list.toArray())
-console.log(list.toArray())
+list.prepend(3)
+list.prepend(2)
+list.prepend(1)
+
+list.delete('first')
+
 
 
 
