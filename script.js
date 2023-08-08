@@ -95,6 +95,8 @@ class LinkedList {
     return deletedNode
   }
   find (value) {
+    if (!this.head || value === undefined) return null
+
     let findingNode = []
     let currentNode = this.head
     while (currentNode) {
@@ -120,7 +122,7 @@ list.prepend('a')
 list.prepend('c')
 
 
-
+list.find()
 
 
 
