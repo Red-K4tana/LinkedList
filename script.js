@@ -94,7 +94,22 @@ class LinkedList {
     console.log(deletedNode)
     return deletedNode
   }
+  find (value) {
+    let findingNode = []
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.val === value) {
+        findingNode.push(currentNode)
+        currentNode = currentNode.next
+      } else {
+        currentNode = currentNode.next
+      }
+    }
+    console.log(findingNode)
+    return findingNode
+  }
 }
+
 
 let list = new LinkedList()
 list.prepend('a')
@@ -103,6 +118,7 @@ list.prepend('b')
 list.prepend('c')
 list.prepend('a')
 list.prepend('c')
+
 
 
 
