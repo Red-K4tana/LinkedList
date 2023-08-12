@@ -63,7 +63,7 @@ class LinkedList {
     return this
   }
   delete (value) {
-    if (!this.head) {
+    if (!this.head || value === undefined) {
       console.log('head null')
       return null
     }
@@ -110,19 +110,46 @@ class LinkedList {
     console.log(findingNode)
     return findingNode
   }
+  deleteTail () {
+    if (!this.head || !this.tail) return null
+
+    const deletedTail = this.tail
+
+    if (this.head === this.tail) {
+      this.head = null
+      this.tail = null
+      console.log('the list has only one element')
+      return
+
+    }
+    let currentNode = this.head
+    while (currentNode.next) {
+      if (!currentNode.next.next) {
+        currentNode.next = null
+      } else {
+        currentNode = currentNode.next
+      }
+    }
+    this.tail = currentNode
+    console.log('deletedTail ', deletedTail)
+    return deletedTail
+  }
+
 }
 
 
 let list = new LinkedList()
-list.prepend('a')
+
 list.prepend('a')
 list.prepend('b')
 list.prepend('c')
-list.prepend('a')
-list.prepend('c')
+list.prepend('d')
+
+list.deleteTail()
+
+console.log(list.toString())
 
 
-list.find()
 
 
 
