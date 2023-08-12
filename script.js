@@ -179,11 +179,11 @@ class LinkedList {
 
     return this
   }
-  insertAfter (value, afterValue) {
+  insertAfter (value, prevValue) {
     let currentNode = this.head
     let newValue = new LinkedListNode(value)
     while (currentNode) {
-      if (currentNode.val === afterValue) {
+      if (currentNode.val === prevValue) {
         // newValue становится между currentNode и currentNode.next,
         // а значит ссылается на currentNode.next
         newValue.next = currentNode.next
