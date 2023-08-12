@@ -147,19 +147,20 @@ class LinkedList {
     }
     return deletedHead
   }
+  fromArray (array) {
+    array.forEach(node => this.append(node))
+  }
+
 }
 
 
 let list = new LinkedList()
 
-list.prepend('a')
-list.prepend('b')
-list.prepend('c')
-list.prepend('d')
+list.fromArray(['3', '2', 'f', 'h'])
+console.log(list.head)
+console.log(list.tail)
 
 
-console.log(list.deleteHead())
-console.log(list.toString())
 
 
 
