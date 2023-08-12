@@ -58,7 +58,9 @@ class LinkedList {
       return this
     }
 
+    // берём последний узел и указываем, что его next будет новым узлом
     this.tail.next = newNode
+    // переназначаем tail на новый узел
     this.tail = newNode
     return this
   }
@@ -150,15 +152,28 @@ class LinkedList {
   fromArray (array) {
     array.forEach(node => this.append(node))
   }
+  toArray () {
+    const arrayNodes = []
 
+    if (!this.head || !this.tail) return null
+
+    let currentNode = this.head
+    while (currentNode) {
+      arrayNodes.push(currentNode)
+      currentNode = currentNode.next
+    }
+    return arrayNodes
+  }
 }
 
 
 let list = new LinkedList()
 
-list.fromArray(['3', '2', 'f', 'h'])
-console.log(list.head)
-console.log(list.tail)
+list.fromArray([1,4,5,'f','das','fgd'])
+
+console.log(list.toString())
+
+console.log(list.toArray())
 
 
 
