@@ -179,23 +179,27 @@ class LinkedList {
 
     return this
   }
-  insertAfter (value, prevValue) {
-    let currentNode = this.head
-    let newValue = new LinkedListNode(value)
-    while (currentNode) {
-      if (currentNode.val === prevValue) {
-        // newValue становится между currentNode и currentNode.next,
-        // а значит ссылается на currentNode.next
-        newValue.next = currentNode.next
-        // и currentNode теперь будет ссылаться на newValue
-        currentNode.next = newValue
+  insertAfter (value, prevNodeValue) {
+    if (prevNodeValue === null) return this
 
-        return newValue
+    let currentNode = this.head
+    let newNode = new LinkedListNode(value)
+    while (currentNode) {
+      if (currentNode.val === prevNodeValue) {
+        // newNode становится между currentNode и currentNode.next,
+        // а значит ссылается на currentNode.next
+        newNode.next = currentNode.next
+        // и currentNode теперь будет ссылаться на newNode
+        currentNode.next = newNode
+
+        return newNode
       } else {
         currentNode = currentNode.next
       }
     }
-    return newValue
+    if (newNode.next === null) this.tail = newNode
+
+    return newNode
   }
 }
 
