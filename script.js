@@ -179,6 +179,24 @@ class LinkedList {
 
     return this
   }
+  insertAfter (value, afterValue) {
+    let currentNode = this.head
+    let newValue = new LinkedListNode(value)
+    while (currentNode) {
+      if (currentNode.val === afterValue) {
+        // newValue становится между currentNode и currentNode.next,
+        // а значит ссылается на currentNode.next
+        newValue.next = currentNode.next
+        // и currentNode теперь будет ссылаться на newValue
+        currentNode.next = newValue
+
+        return newValue
+      } else {
+        currentNode = currentNode.next
+      }
+    }
+    return newValue
+  }
 }
 
 
@@ -188,7 +206,7 @@ list.fromArray([1,4,5,'f','das','fgd'])
 
 console.log(list.toString())
 
-console.log(list.reverse())
+console.log(list.insertAfter('hello world', 4))
 
 console.log(list.toString())
 
