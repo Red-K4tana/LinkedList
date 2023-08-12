@@ -155,14 +155,29 @@ class LinkedList {
   toArray () {
     const arrayNodes = []
 
-    if (!this.head || !this.tail) return null
-
     let currentNode = this.head
     while (currentNode) {
       arrayNodes.push(currentNode)
       currentNode = currentNode.next
     }
     return arrayNodes
+  }
+  reverse () {
+    let currentNode = this.head
+    let prevNode = null
+    let nextNode = null
+
+    while (currentNode) {
+      nextNode = currentNode.next
+      currentNode.next = prevNode
+
+      prevNode = currentNode
+      currentNode = nextNode
+    }
+    this.tail = this.head
+    this.head = prevNode
+
+    return this
   }
 }
 
@@ -173,7 +188,11 @@ list.fromArray([1,4,5,'f','das','fgd'])
 
 console.log(list.toString())
 
-console.log(list.toArray())
+console.log(list.reverse())
+
+console.log(list.toString())
+
+
 
 
 
