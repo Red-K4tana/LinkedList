@@ -119,8 +119,7 @@ class LinkedList {
       this.head = null
       this.tail = null
       console.log('the list has only one element')
-      return
-
+      return deletedTail
     }
     let currentNode = this.head
     while (currentNode.next) {
@@ -134,7 +133,20 @@ class LinkedList {
     console.log('deletedTail ', deletedTail)
     return deletedTail
   }
+  deleteHead () {
+    if (!this.head || !this.tail) return null
 
+    const deletedHead = this.head
+
+    if (this.head.next) {
+      this.head = this.head.next
+    } else {
+      // значит в списке 1 эл-т
+      this.head = null
+      this.tail = null
+    }
+    return deletedHead
+  }
 }
 
 
@@ -145,8 +157,8 @@ list.prepend('b')
 list.prepend('c')
 list.prepend('d')
 
-list.deleteTail()
 
+console.log(list.deleteHead())
 console.log(list.toString())
 
 
